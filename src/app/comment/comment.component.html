@@ -1,0 +1,16 @@
+<table>
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Body</th>
+        <th>Comment</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let comment of comments">
+        <td>{{ comment.id }}</td>
+        <td>{{ comment.body }}</td>
+        <td>{{ comment.postId }}</td>
+      </tr>
+    </tbody>
+  </table>

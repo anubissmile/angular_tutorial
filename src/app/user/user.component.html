@@ -1,3 +1,10 @@
+<div mat-dialog-content [formGroup]="searchFormGroup">
+  <mat-form-field>
+    <input matInput placeholder="Please input text for search" formControlName="text" required>
+  </mat-form-field>
+  <button mat-raised-button color="primary" (click)="onSearch()">Search</button>
+</div>
+
 <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
   <ng-container matColumnDef="id">
     <th mat-header-cell *matHeaderCellDef> ID </th>
@@ -18,15 +25,17 @@
   <ng-container matColumnDef="manage">
     <th mat-header-cell *matHeaderCellDef> Manage </th>
     <td mat-cell *matCellDef="let row"> 
-      <button mat-raised-button color="primary" (click)="onEdit(row.id, row.first_name, row.last_name)">Edit</button>
-      <button mat-raised-button color="primary" (click)="onDelete(row.id)">Delete</button>
+      <button mat-stroke-button color="primary" (click)="onEdit(row.id, row.first_name, row.last_name)">Edit</button>
+      <button mat-stroke-button color="warn" (click)="onDelete(row.id)">Delete</button>
     </td>
   </ng-container>
   
   <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
   <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
 </table>
-
+<div>
+  <button mat-raised-button color="primary" (click)="openDialog()">Add</button>
+</div>
 <!-- <table>
   <thead>
     <tr>

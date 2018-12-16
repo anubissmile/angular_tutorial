@@ -7,6 +7,7 @@ import { UserCreateComponent } from '../user-create/user-create.component';
 import { DialogConfirmComponent } from '../dialog-confirm/dialog-confirm.component';
 import { MatTableDataSource } from '@angular/material';
 import { UserEditComponent } from '../user-edit/user-edit.component';
+import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-user',
@@ -17,12 +18,16 @@ export class UserComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private dialog: MatDialog
+    private dialog: MatDialog,
+    private fb: FormBuilder,
   ) { }
 
   users: User[];
   displayColumns: string[] = ['id', 'first_name', 'last_name', 'avatar', 'manage'];
   dataSource = new MatTableDataSource();
+  searchFormGroup: FormGroup = this.fb.group({
+    text: '',
+  });
 
 
   ngOnInit() {
@@ -44,6 +49,19 @@ export class UserComponent implements OnInit {
       if (res.submit === true) {
         this.saveUser(res.value);
       }
+    });
+  }
+
+  onSearch() {
+    const txtSearch = this.searchFormGroup.value;
+    this.searchUser(txtSearch);
+    this.dataSource = new MatTableDataSource([]);
+  }
+
+  searchUser(search) {
+    console.log('search', search);
+    this.userService.search(search.text).subscribe(user => {
+      this.dataSource = new MatTableDataSource(user);
     });
   }
 

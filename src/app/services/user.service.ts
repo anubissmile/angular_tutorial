@@ -30,4 +30,8 @@ export class UserService {
   edit(id: number, user: User) {
     return this.http.patch(`${environment.jsonServeURL}/users/${id}`, user);
   }
+
+  search(name: string): Observable<User[]> {
+    return this.http.get<[]>(`${environment.jsonServeURL}/users?first_name=${name}`);
+  }
 }

@@ -51,7 +51,7 @@ export class UserEditComponent implements OnInit {
   onCancel() {
     this.dialogRef.close({
       submit: false,
-    })
+    });
   }
 
 

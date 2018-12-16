@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>{{ title }}</h1>
+<div mat-dialog-content [formGroup]="userForm">
+  <mat-form-field>
+    <input matInput placeholder="Firstname" formControlName="first_name">
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Lastname" formControlName="last_name">
+  </mat-form-field>
+</div>
+<div>
+  <button mat-raised-button color="primary" (click)="onSubmit()">Save</button>
+  <button mat-raised-button color="primary" (click)="onCancel()">Cancel</button>
+</div>

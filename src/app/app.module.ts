@@ -48,6 +48,7 @@ import {
   MatTreeModule,
 } from '@angular/material';
 import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.component';
+import { UserEditComponent } from './user-edit/user-edit.component';
 
 @NgModule({
   declarations: [
@@ -56,10 +57,12 @@ import { DialogConfirmComponent } from './dialog-confirm/dialog-confirm.componen
     CommentComponent,
     UserCreateComponent,
     DialogConfirmComponent,
+    UserEditComponent,
   ],
   entryComponents: [
     UserCreateComponent,
     DialogConfirmComponent,
+    UserEditComponent,
   ],
   imports: [
     BrowserAnimationsModule,

@@ -6,6 +6,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { UserCreateComponent } from '../user-create/user-create.component';
 import { DialogConfirmComponent } from '../dialog-confirm/dialog-confirm.component';
 import { MatTableDataSource } from '@angular/material';
+import { UserEditComponent } from '../user-edit/user-edit.component';
 
 @Component({
   selector: 'app-user',
@@ -60,6 +61,30 @@ export class UserComponent implements OnInit {
         this.deleteUser(id);
       }
     });
+  }
+
+  onEdit(id: number, name: string, lastname: string) {
+    const dialogRef = this.dialog.open(UserEditComponent, {
+      width: '400px',
+      data: {
+        title: 'Edit your data.',
+        first_name: name,
+        last_name: lastname,
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(res => {
+      if (res.submit === true) {
+        this.editUser(id, res.value);
+      }
+    });
+  }
+
+  editUser(id: number, user) {
+    this.userService.edit(id, user).subscribe(
+      () => this.getUsers(),
+      () => this.getUsers()
+    );
   }
 
   saveUser(user) {

@@ -26,4 +26,8 @@ export class UserService {
   delete(id: number) {
     return this.http.delete(`${environment.jsonServeURL}/users/${id}`);
   }
+
+  edit(id: number, user: User) {
+    return this.http.patch(`${environment.jsonServeURL}/users/${id}`, user);
+  }
 }

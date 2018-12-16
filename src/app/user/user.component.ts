@@ -29,6 +29,12 @@ export class UserComponent implements OnInit {
     text: '',
   });
 
+  favoriteSeason: string;
+  params: string[] = ['Firstname', 'Lastname'];
+  paramsObj: {
+    
+  }
+
 
   ngOnInit() {
     this.getUsers();

@@ -2,6 +2,12 @@
   <mat-form-field>
     <input matInput placeholder="Please input text for search" formControlName="text" required>
   </mat-form-field>
+  <mat-radio-group class="example-radio-group" [(ngModel)]="favParam">
+      <mat-radio-button class="example-radio-button" *ngFor="let param of params" [value]="param">
+        {{param}}
+      </mat-radio-button>
+    </mat-radio-group>
+  <div class="example-selected-value">Your favorite season is: {{favParam}}</div>
   <button mat-raised-button color="primary" (click)="onSearch()">Search</button>
 </div>
 

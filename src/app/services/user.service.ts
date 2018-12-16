@@ -4,6 +4,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { User } from '../models/user.model';
+import { MatDialog } from '@angular/material/dialog';
 
 @Injectable({
   providedIn: 'root'
@@ -15,6 +16,14 @@ export class UserService {
   ) { }
 
   getAll(): Observable<User[]> {
-    return this.http.get<[]>(`${environment.apiURL}/api/users`);
+    return this.http.get<[]>(`${environment.jsonServeURL}/users`);
+  }
+
+  create(user: User): Observable<User> {
+    return this.http.post<User>(`${environment.jsonServeURL}/users`, user);
+  }
+
+  delete(id: number) {
+    return this.http.delete(`${environment.jsonServeURL}/users/${id}`);
   }
 }

@@ -1,18 +1,49 @@
-<table>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let row"> {{row.id}} </td>
+  </ng-container>
+  <ng-container matColumnDef="first_name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let row"> {{row.first_name}} </td>
+  </ng-container>
+  <ng-container matColumnDef="last_name">
+    <th mat-header-cell *matHeaderCellDef> Lastname </th>
+    <td mat-cell *matCellDef="let row"> {{row.last_name}} </td>
+  </ng-container>
+  <ng-container matColumnDef="avatar">
+    <th mat-header-cell *matHeaderCellDef> Avatar </th>
+    <td mat-cell *matCellDef="let row"> {{row.avatar}} </td>
+  </ng-container>
+  <ng-container matColumnDef="manage">
+    <th mat-header-cell *matHeaderCellDef> Manage </th>
+    <td mat-cell *matCellDef="let row"> 
+      <button mat-raised-button color="primary" (click)="onDelete(row.id)">Delete</button>
+    </td>
+  </ng-container>
+  
+  <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
+</table>
+
+<!-- <table>
   <thead>
     <tr>
       <th>ID</th>
       <th>Name</th>
       <th>Lastname</th>
       <th>Avatar</th>
+      <th>Manage</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let user of users?.data">
+    <tr *ngFor="let user of users">
       <td>{{ user.id }}</td>
       <td>{{ user.first_name }}</td>
       <td>{{ user.last_name }}</td>
       <td>{{ user.avatar }}</td>
+      <td><button mat-raised-button color="primary" (click)="onDelete(user.id)">Delete</button></td>
     </tr>
   </tbody>
-</table>
+  <button mat-raised-button color="primary" (click)="openDialog()">Saved</button>
+</table> -->
